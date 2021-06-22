@@ -1,15 +1,11 @@
 
   <div class="text-white bg-blue-400 bg-opacity-40 rounded p-3 m-4">
-    <app-navlink component="artists" label="Artists"></app-navlink>
     <img src="https://via.placeholder.com/500x500.webp?text={{artist.name}}" alt="">
     <div>
       <a 
-      href=""></a>
-      <app-navlink 
-        component="artists" 
-        label="{{artist.name}}"
         class="pt-4 text-3xl"
-        id={{artist.id}}
-      ></app-navlink>
+        [routerLink]="['/artist', artist.id]"
+        id="id-{{artist.id}}"
+      >{{artist.name}}</a>
     </div>
   </div>

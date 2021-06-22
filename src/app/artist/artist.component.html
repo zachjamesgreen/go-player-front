@@ -1,1 +1,7 @@
-<p>artist works!</p>
+<div class="text-white text-9xl">
+  <p>{{artist.name}}</p>
+</div>
+
+<h1 class="text-white">Albums</h1>
+
+<app-albumcard *ngFor="let album of albums" [album]=album></app-albumcard>
