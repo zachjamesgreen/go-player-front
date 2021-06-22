@@ -14,6 +14,11 @@ import { NavlinkComponent } from './navlink/navlink.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArtistcardComponent } from './artistcard/artistcard.component';
 import { ArtistComponent } from './artist/artist.component';
+import { AlbumcardComponent } from './albumcard/albumcard.component';
+import { AlbumsComponent } from './albums/albums.component';
+import { AlbumComponent } from './album/album.component';
+import { SongrowComponent } from './songrow/songrow.component';
+import { SongsComponent } from './songs/songs.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { ArtistComponent } from './artist/artist.component';
     AsideComponent,
     NavlinkComponent,
     ArtistcardComponent,
-    ArtistComponent
+    ArtistComponent,
+    AlbumcardComponent,
+    AlbumsComponent,
+    AlbumComponent,
+    SongrowComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,

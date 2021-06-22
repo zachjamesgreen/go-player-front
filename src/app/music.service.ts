@@ -12,6 +12,10 @@ export class MusicService {
     
   }
 
+  getArtist(id: number): Observable<Object> {
+    return this.http.get(`${this.path}/artists/${id}`)
+  }
+  
   getArtists(): Observable<Object> {
     return this.http.get(`${this.path}/artists`)
   }
@@ -22,5 +26,21 @@ export class MusicService {
 
   getArtistSongs(id: number): Observable<Object> {
     return this.http.get(`${this.path}/artists/${id}/songs`)
+  }
+
+  getArtistAlbums(id: number): Observable<Object> {
+    return this.http.get(`${this.path}/artists/${id}/albums`)
+  }
+
+  getAlbums(): Observable<Object> {
+    return this.http.get(`${this.path}/albums`)
+  }
+
+  getAlbum(id: number): Observable<Object> {
+    return this.http.get(`${this.path}/albums/${id}`)
+  }
+
+  getAlbumSongs(id: number): Observable<Object> {
+    return this.http.get(`${this.path}/albums/${id}/songs`)
   }
 }
