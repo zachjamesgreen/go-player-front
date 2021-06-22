@@ -13,6 +13,7 @@ import { AsideComponent } from './aside/aside.component';
 import { NavlinkComponent } from './navlink/navlink.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArtistcardComponent } from './artistcard/artistcard.component';
+import { ArtistComponent } from './artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ArtistcardComponent } from './artistcard/artistcard.component';
     ArtistsComponent,
     AsideComponent,
     NavlinkComponent,
-    ArtistcardComponent
+    ArtistcardComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,

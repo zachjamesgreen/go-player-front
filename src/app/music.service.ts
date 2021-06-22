@@ -19,4 +19,8 @@ export class MusicService {
   getSongs(): Observable<Object> {
     return this.http.get(`${this.path}/songs`)
   }
+
+  getArtistSongs(id: number): Observable<Object> {
+    return this.http.get(`${this.path}/artists/${id}/songs`)
+  }
 }
