@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Song } from '../interfaces/song';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-player',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private playerService:PlayerService) { }
 
   ngOnInit(): void {
   }
+
+  play() {
+    if (!this.playerService.isPlaying) {
+      this.playerService.play()
+    }
+  }
+  pause() {
+    if (this.playerService.isPlaying) {
+      this.playerService.pause()
+    }
+  }
+  prev() {}
+  next() {}
+  volumeChange(event: any) {
+    // console.log(event.target.value);
+    this.playerService.setVolume(event.target.value)
+  }
+
+
 
 }

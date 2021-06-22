@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../interfaces/song';
 import { MusicService } from '../music.service';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-songs',
@@ -10,7 +11,7 @@ import { MusicService } from '../music.service';
 export class SongsComponent implements OnInit {
   songs: Song[] = new Array
 
-  constructor(private musicService:MusicService) { }
+  constructor(private musicService:MusicService, private playerService:PlayerService) { }
 
   ngOnInit(): void {
     this.getSongs()
@@ -23,6 +24,11 @@ export class SongsComponent implements OnInit {
           this.songs.push(new Song(song))
         })
       })
+  }
+
+  playSong(song: Song) {
+    this.playerService.load(song)
+    this.playerService.play()
   }
 
 }

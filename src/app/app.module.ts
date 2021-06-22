@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MusicService } from './music.service';
+import { PlayerService } from './player.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -43,7 +44,7 @@ import { PlayerComponent } from './player/player.component';
     HttpClientModule,
     FontAwesomeModule,
   ],
-  providers: [MusicService],
+  providers: [MusicService,PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
