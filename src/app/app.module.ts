@@ -19,6 +19,7 @@ import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './album/album.component';
 import { SongrowComponent } from './songrow/songrow.component';
 import { SongsComponent } from './songs/songs.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SongsComponent } from './songs/songs.component';
     AlbumsComponent,
     AlbumComponent,
     SongrowComponent,
-    SongsComponent
+    SongsComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
