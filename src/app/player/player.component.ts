@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Song } from '../interfaces/song';
 import { PlayerService } from '../player.service';
 
@@ -8,10 +9,14 @@ import { PlayerService } from '../player.service';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
+  songTitle!: String
+  private playerSub!: Subscription
 
   constructor(private playerService:PlayerService) { }
 
   ngOnInit(): void {
+    this.playerSub = this.playerService.playing.subscribe(something => this.setTitle(something));
+    
   }
 
   play() {
@@ -31,8 +36,12 @@ export class PlayerComponent implements OnInit {
     this.playerService.next()
   }
   volumeChange(event: any) {
-    // console.log(event.target.value);
     this.playerService.setVolume(event.target.value)
+  }
+
+  setTitle(song: Song) {
+    this.songTitle = song.title
+    
   }
 
 

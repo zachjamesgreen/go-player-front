@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Song } from './interfaces/song';
 
 @Injectable({
@@ -9,6 +9,7 @@ export class PlayerService {
   private songs!: Song[]
   private song!: Song
   private baseUrl = "http://zachgreen.codes:8081/song"
+  @Output() playing: EventEmitter<any> = new EventEmitter()
   isPlaying: boolean = false
 
   constructor() {
@@ -24,6 +25,7 @@ export class PlayerService {
   play() {
     this.audioObj.play()
     this.isPlaying = true
+    this.playing.emit(this.song)
   }
 
   pause() {
@@ -59,5 +61,9 @@ export class PlayerService {
 
   setVolume(vol: number) {
     this.audioObj.volume = vol
+  }
+
+  songTitle() {
+    this.song.title
   }
 }
