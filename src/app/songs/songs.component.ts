@@ -26,10 +26,10 @@ export class SongsComponent implements OnInit {
       })
   }
 
-  playSong(song: Song) {
-    this.playerService.addSongs(this.songs)
-    this.playerService.load(song)
-    this.playerService.play()
-  }
+  // playSong(song: Song) {
+  //   this.playerService.addSongs(this.songs)
+  //   this.playerService.load(song)
+  //   this.playerService.play()
+  // }
 
 }

@@ -1,5 +1,4 @@
 <div>
   <h1 class="text-white text-9xl">{{album?.title}}</h1>
-
-  <app-songrow *ngFor="let song of songs" [song]="song"></app-songrow>
+  <app-songstable [songs]="songs"></app-songstable>
 </div>

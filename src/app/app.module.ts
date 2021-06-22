@@ -21,6 +21,7 @@ import { AlbumComponent } from './album/album.component';
 import { SongrowComponent } from './songrow/songrow.component';
 import { SongsComponent } from './songs/songs.component';
 import { PlayerComponent } from './player/player.component';
+import { SongstableComponent } from './songstable/songstable.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PlayerComponent } from './player/player.component';
     AlbumComponent,
     SongrowComponent,
     SongsComponent,
-    PlayerComponent
+    PlayerComponent,
+    SongstableComponent
   ],
   imports: [
     BrowserModule,
