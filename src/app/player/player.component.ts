@@ -24,8 +24,12 @@ export class PlayerComponent implements OnInit {
       this.playerService.pause()
     }
   }
-  prev() {}
-  next() {}
+  prev() {
+    this.playerService.prev()
+  }
+  next() {
+    this.playerService.next()
+  }
   volumeChange(event: any) {
     // console.log(event.target.value);
     this.playerService.setVolume(event.target.value)

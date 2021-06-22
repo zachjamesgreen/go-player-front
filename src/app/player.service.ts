@@ -16,11 +16,9 @@ export class PlayerService {
   }
 
   load(song: Song) {
+    this.song = song
     this.audioObj.src = `${this.baseUrl}/${song.path}`
-    this.audioObj.load()
-    this.play()
-    console.log(this.audioObj);
-    
+    this.audioObj.load() 
   }
 
   play() {
@@ -31,6 +29,28 @@ export class PlayerService {
   pause() {
     this.audioObj.pause()
     this.isPlaying = false
+  }
+
+  next() {
+    let idx = this.songs.indexOf(this.song)
+    let n = this.songs[idx+1]
+    if (n) {
+      this.load(n);
+      this.play()
+    } else {
+      return
+    }
+  }
+
+  prev() {
+    let idx = this.songs.indexOf(this.song)
+    let n = this.songs[idx-1]
+    if (n) {
+      this.load(n);
+      this.play()
+    } else {
+      return
+    }
   }
 
   addSongs(songs: Song[]) {
