@@ -9,13 +9,23 @@ import { PlayerService } from '../player.service';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
-  songTitle!: String
+  song!: Song
+  songTitle!: string
+  artist!: string
   private playerSub!: Subscription
+  fcurrentTime: string = '0:00'
+  fDuration: string = '0:00'
+  currentTime: number = 0
+
 
   constructor(private playerService:PlayerService) { }
 
   ngOnInit(): void {
-    this.playerSub = this.playerService.playing.subscribe(something => this.setTitle(something));
+    this.playerSub = this.playerService.playing.subscribe(song => this.setInfo(song));
+    this.playerService.time.subscribe(time => {
+      this.fcurrentTime = this.playerService.formatTime(time)
+      this.currentTime = time
+    })
     
   }
 
@@ -39,8 +49,20 @@ export class PlayerComponent implements OnInit {
     this.playerService.setVolume(event.target.value)
   }
 
-  setTitle(song: Song) {
+  setInfo(song: Song) {
+    this.song = song
     this.songTitle = song.title
+    this.artist = song.artist
+    this.fDuration = this.playerService.formatTime(song.duration)
+    
+  }
+
+  formatedDuration() {
+    this.playerService.formatedDuration
+  }
+
+  onSliderChangeEnd(event: any) {
+    this.playerService.setCurrentTime(event.target.value)
     
   }
 

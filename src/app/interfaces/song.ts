@@ -6,6 +6,11 @@ export class Song {
   artist_id: string;
   album_id: string;
   path: string;
+  year: number;
+  // genre: string;
+  artist: string;
+  album: string;
+  duration!: number
 
   constructor(song: Song) {
     this.id = song.id
@@ -14,6 +19,10 @@ export class Song {
     this.artist_id = song.artist_id
     this.album_id = song.album_id
     this.path = this.fixfilepath(song.path)
+    this.year = song.year
+    // this.genre = song.genre.name
+    this.artist = song.artist
+    this.album = song.album
   }
 
   fixfilepath(filepath: string) {

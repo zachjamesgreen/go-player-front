@@ -18,7 +18,7 @@ export class SongsComponent implements OnInit {
 
   getSongs() {
     this.musicService.getSongs()
-      .subscribe((songs: any) => { 
+      .subscribe((songs: any) => {
         songs.map((song: Song) => {
           this.songs.push(new Song(song))
         })

@@ -3,17 +3,28 @@
   <!-- LEFT -->
   <div class="ml-8">
     <div>
-      <p #title>{{songTitle}}</p>
-      <p>Artist</p>
+      <p>{{song?.title}}</p>
+      <p>{{song?.artist}}</p>
     </div>
   </div>
   <!-- CENTER -->
   <div>
-    <div>
+    <div class="flex">
+      <div>
+        {{fcurrentTime}}
+      </div>
       <input 
-        type="range"
         class="w-97"
+        type="range"
+        defaultValue="0"
+        value={{currentTime}}
+        min="0"
+        max={{song?.duration}}
+        (input)="onSliderChangeEnd($event)"
       >
+      <div>
+        {{fDuration}}
+      </div>
     </div>
     <div class="flex justify-between">
       <button (click)="prev()">
