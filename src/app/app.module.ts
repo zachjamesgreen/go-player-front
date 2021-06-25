@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { AsideComponent } from './aside/aside.component';
 import { NavlinkComponent } from './navlink/navlink.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArtistcardComponent } from './artistcard/artistcard.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AlbumcardComponent } from './albumcard/albumcard.component';
@@ -44,7 +43,6 @@ import { SongstableComponent } from './songstable/songstable.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule,
   ],
   providers: [MusicService,PlayerService],
   bootstrap: [AppComponent]
