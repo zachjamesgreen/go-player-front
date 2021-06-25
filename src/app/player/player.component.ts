@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Song } from '../interfaces/song';
 import { PlayerService } from '../player.service';
@@ -26,6 +26,20 @@ export class PlayerComponent implements OnInit {
       this.fcurrentTime = this.playerService.formatTime(time)
       this.currentTime = time
     })
+    
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    event.preventDefault()
+    if (event.key === " ") {
+      if (this.playerService.isPlaying) {
+        this.playerService.pause()
+      } else {
+        this.playerService.play()
+      }
+      
+    }
     
   }
 
