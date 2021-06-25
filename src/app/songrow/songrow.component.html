@@ -1,5 +1,7 @@
-<div class="flex text-white text-2xl space-x-4 ml-4 mt-4 hover:bg-blue-400 hover:bg-opacity-40 py-1 px-4 rounded-full">
+<div class="flex text-white text-2xl space-x-4 ml-4 mt-4 hover:bg-blue-400 hover:bg-opacity-40 py-1 px-4 rounded-md">
   <div>
     <p>{{song.title}}</p>
+    <a 
+    class="text-blue-400 text-sm hover:underline -mb-8 -pt-8" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist}}</a>
   </div>
 </div>
