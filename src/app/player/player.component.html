@@ -1,20 +1,21 @@
-<div class="h-16 w-screen flex justify-between absolute left-0 bottom-0 bg-blue-400">
+<div class="h-28 w-screen flex fixed bottom-0 left-0 bg-black text-white z-50">
   <!-- TODO fix player to be sticky bottom -->
   <!-- LEFT -->
-  <div class="ml-8">
-    <div>
-      <p>{{song?.title}}</p>
-      <p>{{song?.artist}}</p>
+  <div class="flex items-center">
+    <div class="h-28 w-28">
+      <!-- <img class="h-28" src="https://via.placeholder.com/400x400.webp?text=ZachGreen::Plays" alt=""> -->
+      <img class="h-28" src="http://zachgreen.codes:8081/song/{{song?.artist}}/{{song?.album}}/image.jpg" alt="">
     </div>
   </div>
   <!-- CENTER -->
-  <div>
-    <div class="flex">
-      <div>
-        {{fcurrentTime}}
-      </div>
+  
+
+  <div class="w-full">
+
+    <div id="slidercontainer">
       <input 
-        class="w-97"
+        #playerSlider
+        class="slider w-full"
         type="range"
         defaultValue="0"
         value={{currentTime}}
@@ -22,45 +23,70 @@
         max={{song?.duration}}
         (input)="onSliderChangeEnd($event)"
       >
-      <div>
-        {{fDuration}}
+    </div>
+
+    <div class="flex justify-between">
+
+      <div class="ml-8 mt-6">
+        <div class="font-prompt font-normal">
+          <p>{{song?.title}}</p>
+          <p class="opacity-40">{{song?.artist}}</p>
+        </div>
+      </div>
+
+      <div class="flex mt-4 space-x-12 justify-between items-center content-center">
+        <div class="cursor-pointer" (click)="prev()">
+          <svg class="text-white hover:fill-current hover:text-grn" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" >
+            <path d="M20 2.00024L20 12.4039L20 17.9998C20.0001 18.3618 19.9003 18.7171 19.7113 19.0277C19.5224 19.3384 19.2513 19.5926 18.9271 19.7635C18.6028 19.9343 18.2376 20.0152 17.8703 19.9976C17.503 19.9801 17.1474 19.8647 16.8415 19.6637L4.65434 11.664C4.37615 11.4813 4.14806 11.2339 3.9903 10.9436C3.83254 10.6533 3.75 10.3292 3.75 10C3.75 9.67079 3.83254 9.34666 3.9903 9.05639C4.14806 8.76613 4.37615 8.51869 4.65434 8.33605L16.8415 0.336289C17.1474 0.135338 17.503 0.0199225 17.8703 0.00235576C18.2376 -0.015211 18.6028 0.0657293 18.9271 0.236544C19.2513 0.407358 19.5224 0.661636 19.7113 0.972252C19.9003 1.28287 20.0001 1.63816 20 2.00024Z" fill="currentColor"/>
+            <rect x="3.75" y="20" width="3.75" height="20" rx="1" transform="rotate(180 3.75 20)" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <div class="cursor-pointer" (click)="playPause()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-grn hover:fill-current hover:text-green-500 transition" viewBox="0 0 20 20" fill="currentColor" *ngIf="!isPlaying">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-grn hover:fill-current hover:text-green-500 transition" viewBox="0 0 20 20" fill="currentColor" *ngIf="isPlaying">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </div>
+
+        <div class="cursor-pointer" (click)="next()">
+          <svg class="text-white hover:fill-current hover:text-grn" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" >
+            <path d="M0 17.9998V7.59607V2.00024C-5.50123e-05 1.63816 0.0997205 1.28287 0.288684 0.972252C0.477647 0.661638 0.748707 0.407359 1.07295 0.236544C1.39719 0.06573 1.76244 -0.015211 2.12974 0.00235563C2.49704 0.0199223 2.85261 0.135338 3.15851 0.33629L15.3457 8.33605C15.6238 8.51869 15.8519 8.76612 16.0097 9.05639C16.1675 9.34666 16.25 9.67078 16.25 10C16.25 10.3292 16.1675 10.6533 16.0097 10.9436C15.8519 11.2339 15.6238 11.4813 15.3457 11.6639L3.15851 19.6637C2.85261 19.8647 2.49704 19.9801 2.12974 19.9976C1.76244 20.0152 1.39719 19.9343 1.07295 19.7635C0.748707 19.5926 0.477647 19.3384 0.288684 19.0277C0.0997205 18.7171 -5.50123e-05 18.3618 0 17.9998Z" fill="currentColor"/>
+            <rect x="16.25" width="3.75" height="20" rx="1" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="flex space-x-8 items-center">
+        <div>
+          <p>{{fcurrentTime}} / {{fDuration}}</p>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04BFAD">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+        </div>
+        <div id="volumecontainer">
+          <input 
+            #vol
+            type="range"
+            class="slider mr-8"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+            (input)="volumeChange($event)"
+          >
+        </div>
       </div>
     </div>
-    <div class="flex justify-between">
-      <button (click)="prev()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-        </svg>
-      </button>
-      <button (click)="play()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-        </svg>
-      </button>
-      <button (click)="pause()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-        </svg>
-      </button>
-      <button (click)="next()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-          <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-        </svg>
-      </button>
-    </div>
+
   </div>
   <!-- RIGHT -->
-  <div>
-    <input 
-        type="range"
-        class="mr-8"
-        min="0"
-        max="1"
-        step="0.01"
-        value="0.5"
-        (input)="volumeChange($event)"
-      >
-  </div>
+  <!-- <div>
+    
+  </div> -->
 </div>
 

@@ -1,0 +1,27 @@
+.slider {
+  appearance: none;
+  height: 8px;
+  border-radius: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #04BFAD;
+  cursor: pointer;
+  // margin-left: -0.5rem;
+}
+
+// .slider::-webkit-slider-runnable-track {
+//   width: 100%;
+//   height: 8px;
+//   cursor: pointer;
+//   background: #04BFAD;
+// }
+
+#slidercontainer {
+  margin-top: -0.64rem;
+}

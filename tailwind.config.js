@@ -24,8 +24,9 @@ module.exports = {
         }
       },
       backgroundSize: {
-        '50': '100% 20%',
-      }
+        '50': '100% 20vh',
+      },
+      fill: ['hover'],
     },
     
   },

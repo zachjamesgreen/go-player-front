@@ -64,6 +64,7 @@ export class PlayerService {
       this.load(n);
       this.play()
     } else {
+      this.isPlaying = false
       this.removeEvents(this.audioObj, this.audioEvents, this.eventHandler)
       return
     }
@@ -111,22 +112,21 @@ export class PlayerService {
       case 'canplay':
         console.log('canplay')
         break;
-      case 'playing':
-        console.log('playing')
-        break;
-      case 'pause':
-        console.log('pause')
-        break;
+      // case 'playing':
+      //   console.log('playing')
+      //   break;
+      // case 'pause':
+      //   console.log('pause')
+      //   break;
       case 'timeupdate':
-        // console.log('timeupdate')
         this.time.emit(this.audioObj.currentTime)
         break;
       case 'error':
         console.log('error')
+        this.isPlaying = false
         this.removeEvents(this.audioObj, this.audioEvents, this.eventHandler)
         break;
       case 'ended':
-        console.log('ended')
         this.next()
         break;
     }
