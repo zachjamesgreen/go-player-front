@@ -19,6 +19,12 @@ module.exports = {
         grn: {
           DEFAULT: '#04D9B2'
         },
+        gry: {
+          DEFAULT: '#212121'
+        }
+      },
+      backgroundSize: {
+        '50': '100% 20%',
       }
     },
     
