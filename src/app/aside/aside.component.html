@@ -1,7 +1,64 @@
-<aside class="flex flex-col h-screen px-4 pt-4 text-white text-2xl border-r space-y-4 sticky top-0">
-    <app-navlink component="home" label="ZachGreen::Plays"></app-navlink>
-    <app-navlink component="songs" label="Songs"></app-navlink>
-    <app-navlink component="artists" label="Artists"></app-navlink>
-    <app-navlink component="albums" label="Albums"></app-navlink>
-    <app-navlink component="upload" label="Upload"></app-navlink>
+<aside class="flex flex-col h-screen text-white  sticky top-0 overflow-auto">
+
+    <div class="px-4 pt-4 space-y-4 font-prompt font-semibold">
+        <a href="#" class="uppercase font-oswald font-bold">ZachGreen::Plays</a>
+
+    <!-- NAV -->
+
+    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+        <div class="mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+        </div>
+        <a [routerLink]="['/home']">Home</a>
+    </div>
+
+    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+        <div class="mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+        <a [routerLink]="['/search']">Search</a>
+    </div>
+
+    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+        <div class="mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+        </div>
+        <a [routerLink]="['/songs']">Songs</a>
+    </div>
+
+    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+        <div class="mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+        </div>
+        <a [routerLink]="['/artists']">Artists</a>
+    </div>
+
+    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+        <div class="mr-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0C13.9706 0 18 4.02944 18 9C18 13.9706 13.9706 18 9 18C4.02944 18 0 13.9706 0 9C0 4.02944 4.02944 0 9 0ZM9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2Z" fill="#04D9B2"/>
+                <circle cx="9" cy="9" r="2.25" fill="#04D9B2"/>
+            </svg>
+        </div>
+        <a [routerLink]="['/albums']">Albums</a>
+    </div>
+    </div>
+
+    <!-- END NAV -->
+    <hr class="w-full mt-6">
+    <!-- PLAYLISTS -->
+
+    <div class="px-4 pt-8 space-y-4 font-prompt font-semibold">
+        <p class="uppercase text-prompt font-bold opacity-50">Playlists</p>
+        <p *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="text-prompt text-semibold ">playlist  {{i}}</p>
+    </div>
+
 </aside>

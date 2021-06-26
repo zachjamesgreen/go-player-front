@@ -1,3 +1,5 @@
+import { DateTime, Duration }from "luxon";
+
 export class Song {
   
   id: number;
@@ -11,6 +13,8 @@ export class Song {
   artist: string;
   album: string;
   duration!: number
+  created_at: DateTime
+  updated_at: DateTime
 
   constructor(song: Song) {
     this.id = song.id
@@ -23,6 +27,8 @@ export class Song {
     // this.genre = song.genre.name
     this.artist = song.artist
     this.album = song.album
+    this.created_at = song.created_at
+    this.updated_at = song.updated_at
   }
 
   fixfilepath(filepath: string) {

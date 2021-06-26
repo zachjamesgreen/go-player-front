@@ -7,9 +7,18 @@ module.exports = {
   },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      'oswald': ['Oswald'],
+      'prompt': ['Prompt'],
+    },
     extend: {
       spacing: {
         '97': '60rem'
+      },
+      colors: {
+        grn: {
+          DEFAULT: '#04D9B2'
+        },
       }
     },
     
