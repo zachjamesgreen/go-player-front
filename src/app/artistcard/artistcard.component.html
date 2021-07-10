@@ -1,11 +1,9 @@
-
-  <div class="text-white bg-blue-400 bg-opacity-40 rounded p-3 m-4">
-    <img src="https://via.placeholder.com/500x500.webp?text={{artist.name}}" alt="">
-    <div>
-      <a 
-        class="pt-4 text-3xl"
-        [routerLink]="['/artist', artist.id]"
-        id="id-{{artist.id}}"
-      >{{artist.name}}</a>
-    </div>
+<div class="text-white bg-blue-400 bg-opacity-40 rounded p-3 m-4">
+  
+  <div class="">
+    <a class="text-3xl grid justify-items-center pt-4" [routerLink]="['/artist', artist.id]" id="id-{{artist.id}}">
+      <img class="rounded-full" src="{{artist.images[0].url}}" alt="{{artist.name}}">
+      <p class="pt-4 ">{{artist.name}}</p>
+    </a>
   </div>
+</div>
