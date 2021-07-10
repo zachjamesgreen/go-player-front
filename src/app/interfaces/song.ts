@@ -15,6 +15,8 @@ export class Song {
   duration!: number
   created_at: DateTime
   updated_at: DateTime
+  url = "http://zachgreen.codes:8081/song"
+  audio = new Audio()
 
   constructor(song: Song) {
     this.id = song.id
@@ -29,9 +31,21 @@ export class Song {
     this.album = song.album
     this.created_at = song.created_at
     this.updated_at = song.updated_at
+    this.getDuration()
   }
 
   fixfilepath(filepath: string) {
     return filepath.replace("files/", "")
   }
+
+  getDuration() {
+    this.audio.src = this.url + "/" + this.path
+    let url = "http://zachgreen.codes:8081/song"
+    this.audio.onloadedmetadata = () => {
+      // this.duration = Duration.fromObject({seconds: this.audio.duration}).toFormat("m:ss")
+      this.duration = this.audio.duration
+      this.audio.src = ''
+    }
+  }
+
 }

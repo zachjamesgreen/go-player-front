@@ -1,7 +1,17 @@
-<div class="flex text-white text-2xl space-x-4 ml-4 mt-4 hover:bg-blue-400 hover:bg-opacity-40 py-1 px-4 rounded-md">
-  <div>
-    <p>{{song.title}}</p>
-    <a 
-    class="text-blue-400 text-sm hover:underline -mb-8 -pt-8" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist}}</a>
+<div class="grid grid-cols-5 gap-4 text-white hover:bg-blue-400 hover:bg-opacity-40 rounded-md text-sm px-8">
+  <div class="flex flex-shrink items-center justify-start w-min"><p class="">{{index + 1}}</p></div>
+  <div class="flex items-center justify-start w-auto">
+    <img class="h-12 pr-4" src="http://zachgreen.codes:8081/song/{{song?.artist}}/{{song?.album}}/image.jpg" alt="">
+      <div>
+        <p>{{song.title}}</p>
+        <p>{{song.artist}}</p>
+      </div>
   </div>
+  <div class="flex items-center justify-start w-auto">
+    <a 
+    class="text-grn hover:underline" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist}}</a>
+  </div>
+  <div class="flex items-center justify-start w-auto"><p>{{date}}</p></div>
+  <div class="flex items-center justify-end w-auto"><p>{{formatTime(song.duration)}}</p></div>
+      
 </div>
