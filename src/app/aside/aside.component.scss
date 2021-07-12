@@ -1,0 +1,26 @@
+aside {
+  height: calc(100vh - 7rem);
+  &#playlists {
+    height: 22rem;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #04D9B2;
+}

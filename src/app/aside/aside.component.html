@@ -1,4 +1,4 @@
-<aside class="flex flex-col h-screen text-white  bg-black sticky top-0 overflow-auto pt-4">
+<aside class="flex flex-col text-white bg-black fixed top-0 pt-4 float-left">
 
     <div class="px-4 pt-4 space-y-4 font-prompt font-semibold">
         <a href="#" class="uppercase font-oswald font-bold">ZachGreen::Plays</a>
@@ -56,7 +56,7 @@
     <hr class="w-full mt-6">
     <!-- PLAYLISTS -->
 
-    <div class="px-4 pt-8 space-y-4 font-prompt font-semibold">
+    <div id="playlists" class="px-4 pt-8 space-y-4 font-prompt font-semibold overflow-auto">
         <p class="uppercase text-prompt font-bold opacity-50">Playlists</p>
         <p *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="text-prompt text-semibold ">playlist  {{i}}</p>
     </div>

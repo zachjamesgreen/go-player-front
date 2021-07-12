@@ -14,8 +14,10 @@
       </li>
     </ul> -->
 
-<div class="flex bg-black bg-gradient-to-b from-grn bg-50 bg-no-repeat mb-28 pb-8">
-  <app-aside></app-aside>
-  <router-outlet></router-outlet>
+<div class="flex bg-black bg-gradient-to-b from-grn bg-50 bg-no-repeat mb-28 pb-8 overflow-hidden">
+  <app-aside class="h-full"></app-aside>
+  <div class="ml-40">
+    <router-outlet></router-outlet>
+  </div>
   <app-player></app-player>
 </div>
