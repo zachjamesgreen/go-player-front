@@ -87,8 +87,6 @@ export class PlayerComponent implements OnInit {
   }
 
   volumeChange(event: any) {
-    console.log(event.target.value);
-    
     this.playerService.setVolume(event.target.value)
     this.setSliderCSS(event.target)
   }

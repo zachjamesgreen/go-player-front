@@ -23,8 +23,8 @@ export class AlbumsComponent implements OnInit {
   getAlbums() {
     this.musicService.getAlbums()
     .subscribe((albums: any) => {
-      albums.map((album: Album) => {
-        this.albums.push(new Album(album))
+      albums.map((album: Album) => {      
+        this.albums.push(new Album(album))       
       })
     })
   }

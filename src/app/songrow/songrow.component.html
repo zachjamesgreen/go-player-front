@@ -1,17 +1,35 @@
-<div class="grid grid-cols-5 gap-4 px-8 py-1 text-white hover:bg-grn hover:bg-opacity-40 rounded-md text-sm">
+<div class="grid grid-cols-5 gap-4 px-8 py-1 text-white hover:bg-grn hover:bg-opacity-40 rounded-md text-sm group cursor-pointer">
   <div class="flex flex-shrink items-center justify-start w-min"><p class="">{{index + 1}}</p></div>
   <div class="flex items-center justify-start w-auto">
-    <img class="h-12 pr-4" src="http://zachgreen.codes:8081/song/{{song?.artist}}/{{song?.album}}/image.jpg" alt="">
+    <!-- <img class="h-12 pr-4" src="http://zachgreen.codes:8081/song/{{song?.artist}}/{{song?.album}}/image.jpg" alt="" *ngIf="song.album_images == []"> -->
+    <img class="h-12 pr-4" src="{{song.album_images[0].url}}" alt="" *ngIf="song.album_images != []">
       <div>
-        <p>{{song.title}}</p>
-        <p>{{song.artist}}</p>
+        <p class="overflow-hidden">{{song.title}}</p>
+        <a class="hover:underline" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist}}</a>
+        <!-- <img class="rounded-xl" src="{{artist.images[0].url}}" alt="{{artist.name}}"> -->
       </div>
   </div>
   <div class="flex items-center justify-start w-auto">
     <a 
-    class="text-grn hover:underline" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist}}</a>
+    class="text-grn hover:underline" [routerLink]="['/album', song.album_id]" id="id-{{song.album_id}}">{{song.album}}</a>
   </div>
-  <div class="flex items-center justify-start w-auto"><p>{{date}}</p></div>
-  <div class="flex items-center justify-end w-auto"><p>{{formatTime(song.duration)}}</p></div>
+  <div class="flex items-center justify-start w-auto"><p>{{this.song.dateToString()}}</p></div>
+  <div class="flex items-center justify-end w-auto">
+    <div class="mr-8" id="heart" title="{{toolTip()}}" (click)="likeSong()">
+      <svg 
+        *ngIf="song.liked" 
+        width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.17115 1.22115C1.92126 0.471268 2.93849 0.0500067 3.99915 0.0500067C5.0598 0.0500067 6.07703 0.471268 6.82715 1.22115L7.99915 2.39215L9.17115 1.22115C9.54013 0.839112 9.98151 0.534383 10.4695 0.324747C10.9575 0.115111 11.4824 0.00476629 12.0135 0.000151027C12.5447 -0.00446424 13.0714 0.0967427 13.563 0.297866C14.0545 0.49899 14.5012 0.796002 14.8767 1.17157C15.2523 1.54714 15.5493 1.99375 15.7504 2.48534C15.9516 2.97692 16.0528 3.50364 16.0481 4.03476C16.0435 4.56588 15.9332 5.09075 15.7236 5.57877C15.5139 6.06679 15.2092 6.50817 14.8271 6.87715L7.99915 13.7062L1.17115 6.87715C0.421261 6.12704 0 5.10981 0 4.04915C0 2.9885 0.421261 1.97126 1.17115 1.22115Z" fill="#04D9B2"/>
+      </svg>
+      <svg 
+      *ngIf="!song.liked"
+        class="text-grn hidden group-hover:block hover:fill-current" 
+        width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.31804 2.31804C1.90017 2.7359 1.5687 3.23198 1.34255 3.77795C1.1164 4.32392 1 4.90909 1 5.50004C1 6.09099 1.1164 6.67616 1.34255 7.22213C1.5687 7.7681 1.90017 8.26417 2.31804 8.68204L10 16.364L17.682 8.68204C18.526 7.83812 19.0001 6.69352 19.0001 5.50004C19.0001 4.30656 18.526 3.16196 17.682 2.31804C16.8381 1.47412 15.6935 1.00001 14.5 1.00001C13.3066 1.00001 12.162 1.47412 11.318 2.31804L10 3.63604L8.68204 2.31804C8.26417 1.90017 7.7681 1.5687 7.22213 1.34255C6.67616 1.1164 6.09099 1 5.50004 1C4.90909 1 4.32392 1.1164 3.77795 1.34255C3.23198 1.5687 2.7359 1.90017 2.31804 2.31804V2.31804Z" stroke="#04D9B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        
+    </div>
+    <p>{{formatTime(song.duration)}}</p>
+  </div>
       
 </div>

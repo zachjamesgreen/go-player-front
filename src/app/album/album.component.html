@@ -1,4 +1,14 @@
 <div>
-  <h1 class="text-white text-9xl">{{album?.title}}</h1>
-  <app-songstable [songs]="songs"></app-songstable>
+  <div class="flex m-16">
+    <!-- <img class=" w-60" src="http://zachgreen.codes:8081/song/{{album?.artist}}/{{album?.title}}/image.jpg" alt=""> -->
+    <img class="h-52 pr-4" src="{{album.spotify_images[0]?.url}}" alt="">
+    <div class="flex flex-col justify-end ml-8">
+      <h1 class="text-white text-5xl">{{album?.title}}</h1>
+      <h1 class="text-white text3xl">{{album?.artist}}</h1>
+    </div>
+  </div>
+  <div class="px-8">
+    <app-songtableheader></app-songtableheader>>
+    <app-songstable [songs]="songs"></app-songstable>
+  </div>
 </div>

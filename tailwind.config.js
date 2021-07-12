@@ -31,7 +31,10 @@ module.exports = {
     
   },
   variants: {
-    extend: {},
+    extend: {
+      display: ['hover', 'group-hover'],
+      fill: ['hover'],
+    },
   },
   plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography')],
 };

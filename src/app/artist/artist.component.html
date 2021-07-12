@@ -1,7 +1,9 @@
-<div class="text-white text-9xl">
+<div class="text-white text-7xl m-16">
   <p>{{artist.name}}</p>
+  <h1 class="text-white text-3xl font-light">Albums</h1>
 </div>
 
-<h1 class="text-white">Albums</h1>
 
-<app-albumcard *ngFor="let album of albums" [album]=album></app-albumcard>
+<div class="grid grid-cols-5 gap-6 m-16">
+  <app-albumcard *ngFor="let album of albums" [album]=album></app-albumcard>
+</div>

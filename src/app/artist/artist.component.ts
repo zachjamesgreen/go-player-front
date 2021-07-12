@@ -22,7 +22,7 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArtist()
-    this.getSongs()
+    // this.getSongs()
     this.getAlbums()
     
   }
@@ -47,6 +47,8 @@ export class ArtistComponent implements OnInit {
     this.musicService.getArtistAlbums(this.artist_id)
     .subscribe((albums: any) => {
       albums.map((album: Album) => {
+        console.log(album);
+        
         this.albums.push(new Album(album))
       })
     })

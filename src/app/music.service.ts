@@ -43,4 +43,8 @@ export class MusicService {
   getAlbumSongs(id: number): Observable<Object> {
     return this.http.get(`${this.path}/albums/${id}/songs`)
   }
+
+  updateSongLike(id: number, like: boolean) {
+    return this.http.post(`${this.path}/songs/${id}/like`, like)
+  }
 }
