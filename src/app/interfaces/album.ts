@@ -1,4 +1,5 @@
 import { Artist } from "./artist"
+import { IImages } from "./spotify_image"
 
 export class Album {
 
@@ -8,6 +9,7 @@ export class Album {
   artist_id: number
   artist: string
   image: boolean
+  spotify_images: Array<IImages> = []
 
   constructor(album: Album) {
     this.id = album.id;

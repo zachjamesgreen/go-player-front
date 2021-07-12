@@ -1,11 +1,15 @@
-<div class="text-white bg-blue-400 bg-opacity-40 rounded p-3 m-4">
-  <img src="https://via.placeholder.com/500x500.webp?text={{album.title}}" alt="" *ngIf="!album.image">
-  <img src="http://zachgreen.codes:8081/song/{{album.artist}}/{{album.title}}/image.jpg" alt="" *ngIf="album.image">
+<div class="text-white">
   <div>
     <a 
       class="pt-4 text-3xl"
       [routerLink]="['/album', album.id]"
       id="id-{{album.id}}"
-    >{{album.title}}</a>
+      >
+      <!-- <img src="https://via.placeholder.com/500x500.webp?text={{album.title}}" alt="" *ngIf="!album.image"> -->
+      <!-- <img src="http://zachgreen.codes:8081/song/{{album.artist}}/{{album.title}}/image.jpg" alt="" *ngIf="album.image"> -->
+      <img src="{{album.spotify_images[0]?.url}}" alt="{{album.title}}">
+      <p>{{album.title}}</p>
+      <p class="text-sm opacity-50">{{album.artist}}</p>
+    </a>
   </div>
 </div>
