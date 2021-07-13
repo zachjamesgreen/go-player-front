@@ -5,51 +5,60 @@
 
     <!-- NAV -->
 
-    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
-        <div class="mr-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
+        <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+            <div class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </div>
+            <a [routerLink]="['/home']">Home</a>
         </div>
-        <a [routerLink]="['/home']">Home</a>
-    </div>
 
-    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
-        <div class="mr-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-        </div>
-        <a [routerLink]="['/search']">Search</a>
-    </div>
+        <!-- <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+            <div class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <a [routerLink]="['/search']">Search</a>
+        </div> -->
 
-    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
-        <div class="mr-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-            </svg>
+        <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+            <div class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
+            </div>
+            <a [routerLink]="['/songs']">Songs</a>
         </div>
-        <a [routerLink]="['/songs']">Songs</a>
-    </div>
 
-    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
-        <div class="mr-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
+        <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+            <div class="mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#04D9B2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </div>
+            <a [routerLink]="['/artists']">Artists</a>
         </div>
-        <a [routerLink]="['/artists']">Artists</a>
-    </div>
 
-    <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
-        <div class="mr-2">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0C13.9706 0 18 4.02944 18 9C18 13.9706 13.9706 18 9 18C4.02944 18 0 13.9706 0 9C0 4.02944 4.02944 0 9 0ZM9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2Z" fill="#04D9B2"/>
-                <circle cx="9" cy="9" r="2.25" fill="#04D9B2"/>
-            </svg>
+        <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+            <div class="mr-2">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0C13.9706 0 18 4.02944 18 9C18 13.9706 13.9706 18 9 18C4.02944 18 0 13.9706 0 9C0 4.02944 4.02944 0 9 0ZM9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2Z" fill="#04D9B2"/>
+                    <circle cx="9" cy="9" r="2.25" fill="#04D9B2"/>
+                </svg>
+            </div>
+            <a [routerLink]="['/albums']">Albums</a>
         </div>
-        <a [routerLink]="['/albums']">Albums</a>
-    </div>
+
+        <div class="flex transition hover:bg-grn hover:bg-opacity-40 rounded-full py-1 px-2">
+            <div class="mr-2">
+                <svg width="20" height="20" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.17115 1.22115C1.92126 0.471268 2.93849 0.0500067 3.99915 0.0500067C5.0598 0.0500067 6.07703 0.471268 6.82715 1.22115L7.99915 2.39215L9.17115 1.22115C9.54013 0.839112 9.98151 0.534383 10.4695 0.324747C10.9575 0.115111 11.4824 0.00476629 12.0135 0.000151027C12.5447 -0.00446424 13.0714 0.0967427 13.563 0.297866C14.0545 0.49899 14.5012 0.796002 14.8767 1.17157C15.2523 1.54714 15.5493 1.99375 15.7504 2.48534C15.9516 2.97692 16.0528 3.50364 16.0481 4.03476C16.0435 4.56588 15.9332 5.09075 15.7236 5.57877C15.5139 6.06679 15.2092 6.50817 14.8271 6.87715L7.99915 13.7062L1.17115 6.87715C0.421261 6.12704 0 5.10981 0 4.04915C0 2.9885 0.421261 1.97126 1.17115 1.22115Z" fill="#04D9B2"/>
+                </svg>
+            </div>
+            <a [routerLink]="['/search']">Liked Songs</a>
+        </div>
     </div>
 
     <!-- END NAV -->
