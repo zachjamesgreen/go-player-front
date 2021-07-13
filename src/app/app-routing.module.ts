@@ -6,6 +6,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './album/album.component';
 import { SongsComponent } from './songs/songs.component';
+import { LikedSongsComponent } from './liked-songs/liked-songs.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'songs', component: SongsComponent},
   {path: 'album/:id', component: AlbumComponent},
   {path: 'artist/:id', component: ArtistComponent},
+  {path: 'liked', component: LikedSongsComponent},
   {path: '', component: HomeComponent},
 ];
 

@@ -22,6 +22,7 @@ import { SongsComponent } from './songs/songs.component';
 import { PlayerComponent } from './player/player.component';
 import { SongstableComponent } from './songstable/songstable.component';
 import { SongtableheaderComponent } from './songtableheader/songtableheader.component';
+import { LikedSongsComponent } from './liked-songs/liked-songs.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SongtableheaderComponent } from './songtableheader/songtableheader.comp
     SongsComponent,
     PlayerComponent,
     SongstableComponent,
-    SongtableheaderComponent
+    SongtableheaderComponent,
+    LikedSongsComponent
   ],
   imports: [
     BrowserModule,

@@ -47,4 +47,16 @@ export class MusicService {
   updateSongLike(id: number, like: boolean) {
     return this.http.post(`${this.path}/songs/${id}/like`, like)
   }
+
+  getLikedSongs(): Observable<Object> {
+    return this.http.get(`${this.path}/liked`)
+  }
+
+  addToLikedPlaylist(id: number) {
+    return this.http.get(`${this.path}/liked/${id}`)
+  }
+
+  removeFromLikedPlaylist(id: number) {
+    return this.http.get(`${this.path}/liked/${id}/remove`)
+  }
 }
