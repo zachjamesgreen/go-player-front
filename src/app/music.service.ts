@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 // import { catchError, retry } from 'rxjs/operators';
 
@@ -44,19 +44,15 @@ export class MusicService {
     return this.http.get(`${this.path}/albums/${id}/songs`)
   }
 
-  updateSongLike(id: number, like: boolean) {
-    return this.http.post(`${this.path}/songs/${id}/like`, like)
-  }
-
   getLikedSongs(): Observable<Object> {
-    return this.http.get(`${this.path}/liked`)
+    return this.http.get(`${this.path}/songs/liked`)
   }
 
-  addToLikedPlaylist(id: number) {
-    return this.http.get(`${this.path}/liked/${id}`)
+  like(id: number) {
+    return this.http.get(`${this.path}/songs/liked/${id}`)
   }
 
-  removeFromLikedPlaylist(id: number) {
-    return this.http.get(`${this.path}/liked/${id}/remove`)
+  unlike(id: number) {
+    return this.http.get(`${this.path}/songs/liked/${id}/remove`)
   }
 }

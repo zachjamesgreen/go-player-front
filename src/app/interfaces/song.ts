@@ -11,7 +11,7 @@ export class Song {
   path: string;
   year: number;
   plays: number = 0;
-  liked: boolean = false;
+  liked: boolean;
   // genre: string;
   artist: string;
   album: string;

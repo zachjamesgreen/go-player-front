@@ -29,6 +29,9 @@ export class AlbumComponent implements OnInit {
         songs.map((song: Song) => {
           this.songs.push(new Song(song))
         })
+        this.songs.sort((a,b) => {
+          return a.track - b.track
+        })
       })
 
     this.musicService.getAlbum(this.album_id)

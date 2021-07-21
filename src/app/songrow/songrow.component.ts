@@ -18,6 +18,7 @@ export class SongrowComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAlbumInfoFromSpotify()
+    console.log(this.song.liked);
   }
 
   formatTime(time: number): string {
@@ -32,8 +33,17 @@ export class SongrowComponent implements OnInit {
     }
   }
 
-  likeSong() {
-    this.musicService.updateSongLike(this.song.id, !this.song.liked)
+  likeSong(e: any) {
+    e.stopPropagation();
+    if (this.song.liked) {
+      this.musicService.unlike(this.song.id).subscribe(() => {
+        this.song.liked = false;
+      })
+    } else if (!this.song.liked) {
+      this.musicService.like(this.song.id).subscribe(() => {
+        this.song.liked = true;
+      })
+    }
   }
 
   getAlbumInfoFromSpotify() {
@@ -47,5 +57,4 @@ export class SongrowComponent implements OnInit {
       })
     })
   }
-
 }
