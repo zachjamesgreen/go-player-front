@@ -19,7 +19,6 @@ export class Song {
   created_at: DateTime
   liked_date: DateTime
   url = "http://zachgreen.codes:8081/song"
-  audio = new Audio()
   album_images: Array<IImages> = []
 
   constructor(song: Song) {
@@ -44,11 +43,12 @@ export class Song {
   }
 
   getDuration() {
-    this.audio.src = this.url + "/" + this.path
+    let audio = new Audio()
+    audio.src = this.url + "/" + this.path
     let url = "http://zachgreen.codes:8081/song"
-    this.audio.onloadedmetadata = () => {
-      this.duration = this.audio.duration
-      this.audio.src = ''
+    audio.onloadedmetadata = () => {
+      this.duration = audio.duration
+      audio.src = ''
     }
   }
 

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "musicoll": {
+      "hosting": {
+        "music-frontend": [
+          "musicoll"
+        ]
+      }
+    }
+  }
+}

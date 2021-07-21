@@ -3,7 +3,7 @@ import { Song } from '../interfaces/song';
 import { Duration }from "luxon";
 import { MusicService } from '../music.service';
 import { SpotifyService } from '../spotify.service';
-// import { dateToString } from '../lib/date-to-string';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-songrow',
@@ -16,7 +16,7 @@ export class SongrowComponent implements OnInit {
   @Input() liked: boolean = false
   // date = DateTime.now().toISODate()
 
-  constructor(private musicService:MusicService, private spotifyService:SpotifyService) { }
+  constructor(private musicService:MusicService, private spotifyService:SpotifyService, private store:AngularFirestore) { }
 
   ngOnInit(): void {
     this.getAlbumInfoFromSpotify()
@@ -51,8 +51,10 @@ export class SongrowComponent implements OnInit {
     this.spotifyService.getAlbumInfo(this.song.album).subscribe((albumInfo:any) => {
       albumInfo['albums']['items'].forEach((album:any) => {
         album['artists'].forEach((artist:any) => {
-          if (artist['name'] === this.song.artist) {         
+          if (artist['name'] === this.song.artist) {   
             this.song.album_images = album['images'];
+            let str = JSON.stringify(this.song)
+            this.store.collection('songs').doc(this.song.id.toString()).set(JSON.parse(str))      
           }
         })
       })

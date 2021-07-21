@@ -24,6 +24,9 @@ import { SongstableComponent } from './songstable/songstable.component';
 import { SongtableheaderComponent } from './songtableheader/songtableheader.component';
 import { LikedSongsComponent } from './liked-songs/liked-songs.component';
 import { ReadableDatePipe } from './readable-date.pipe';
+import { firebaseConfig } from './env';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { ReadableDatePipe } from './readable-date.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [MusicService,PlayerService],
   bootstrap: [AppComponent]

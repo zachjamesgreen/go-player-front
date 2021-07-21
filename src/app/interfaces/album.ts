@@ -10,12 +10,14 @@ export class Album {
   artist: string
   image: boolean
   spotify_images: Array<IImages> = []
+  spotify_id!: string;
+  spotify_url!: string;
 
   constructor(album: Album) {
     this.id = album.id;
     this.title = album.title;
-    this.artist_id = album.artist_id
-    this.image = album.image
-    this.artist = album.artist
+    this.artist_id = album.artist_id;
+    this.image = album.image;
+    this.artist = album.artist;
   }
 }

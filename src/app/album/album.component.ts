@@ -4,6 +4,7 @@ import { Album } from '../interfaces/album';
 import { Song } from '../interfaces/song';
 import { MusicService } from '../music.service';
 import { SpotifyService } from '../spotify.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-album',
@@ -15,7 +16,7 @@ export class AlbumComponent implements OnInit {
   album!: Album
   songs: Song[] = new Array
 
-  constructor(private musicService:MusicService, private actroute: ActivatedRoute, private spotifyService: SpotifyService) {
+  constructor(private musicService:MusicService, private actroute: ActivatedRoute, private spotifyService: SpotifyService, private store: AngularFirestore) {
     this.album_id = this.actroute.snapshot.params.id;
   }
 
@@ -45,11 +46,14 @@ export class AlbumComponent implements OnInit {
     this.spotifyService.getAlbumInfo(this.album.title).subscribe((albumInfo:any) => {
       albumInfo['albums']['items'].forEach((album:any) => {
         album['artists'].forEach((artist:any) => {
-          if (artist['name'] === this.album.artist) {         
+          if (artist['name'] === this.album.artist) {   
             this.album.spotify_images = album['images'];
+            this.album.spotify_url = album['external_urls']['spotify'];
+            this.album.spotify_id = album['id'];
             this.songs.forEach((song:any) => {
               song.album_images = album['images'];
             })
+            this.store.collection('albums').doc(this.album.id.toString()).set(Object.assign({}, this.album))
           }
         })
       })
