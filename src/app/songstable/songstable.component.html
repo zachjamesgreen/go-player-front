@@ -1,1 +1,1 @@
-<app-songrow *ngFor="let song of songs; index as i" [song]="song" [index]="i" (click)="playSong(song)"></app-songrow>
+<app-songrow *ngFor="let song of songs; index as i" [song]="song" [index]="i" (click)="playSong(song)" [liked]="liked"></app-songrow>

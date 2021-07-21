@@ -1,1 +1,42 @@
-<p>liked-songs works!</p>
+<div class="text-white p-8">
+
+  <div class="flex justify-between">
+    <h1 class="text-7xl pb-8 pt-8">Liked Songs</h1>
+    <div class="self-end mb-8 mr-16 group">
+      <div class="flex">
+        <p>Order</p>
+        <div class="pt-1 pl-2">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29303 7.29302C5.48056 7.10555 5.73487 7.00023 6.00003 7.00023C6.26519 7.00023 6.5195 7.10555 6.70703 7.29302L10 10.586L13.293 7.29302C13.3853 7.19751 13.4956 7.12133 13.6176 7.06892C13.7396 7.01651 13.8709 6.98892 14.0036 6.98777C14.1364 6.98662 14.2681 7.01192 14.391 7.0622C14.5139 7.11248 14.6255 7.18673 14.7194 7.28062C14.8133 7.37452 14.8876 7.48617 14.9379 7.60907C14.9881 7.73196 15.0134 7.86364 15.0123 7.99642C15.0111 8.1292 14.9835 8.26042 14.9311 8.38242C14.8787 8.50443 14.8025 8.61477 14.707 8.70702L10.707 12.707C10.5195 12.8945 10.2652 12.9998 10 12.9998C9.73487 12.9998 9.48056 12.8945 9.29303 12.707L5.29303 8.70702C5.10556 8.51949 5.00024 8.26518 5.00024 8.00002C5.00024 7.73486 5.10556 7.48055 5.29303 7.29302Z" fill="white"/>
+          </svg>          
+        </div>
+      </div>
+      <!-- Dropdown Menu-->
+      <div class="hidden group-hover:flex absolute flex-col w-40 bg-grn bg-opacity-80 rounded -ml-12">
+        <button class="hover:bg-black mx-1 my-1 rounded" (click)="orderBy('title')">Title</button>
+        <button class="hover:bg-black mx-1 my-1 rounded" (click)="orderBy('artist')">Artist</button>
+        <button class="hover:bg-black mx-1 my-1 rounded" (click)="orderBy('album')">Album</button>
+        <button class="hover:bg-black mx-1 my-1 rounded" (click)="orderBy('created_at')">Date</button>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="grid grid-cols-5 gap-4 px-8 mb-4 border border-t-0 border-l-0 border-r-0 border-b-1 border-white">
+    <div class="flex items-center justify-start w-auto">#</div>
+    <div class="flex items-center justify-start w-auto">TITLE</div>
+    <div class="flex items-center justify-start w-auto">ALBUM</div>
+    <div class="flex items-center justify-start w-auto">DATE ADDED</div>
+
+    <div class="flex items-center justify-end w-auto">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6.66667V10L12.5 12.5L10 6.66667ZM17.5 10C17.5 10.9849 17.306 11.9602 16.9291 12.8701C16.5522 13.7801 15.9997 14.6069 15.3033 15.3033C14.6069 15.9997 13.7801 16.5522 12.8701 16.9291C11.9602 17.306 10.9849 17.5 10 17.5C9.01509 17.5 8.03982 17.306 7.12987 16.9291C6.21993 16.5522 5.39314 15.9997 4.6967 15.3033C4.00026 14.6069 3.44781 13.7801 3.0709 12.8701C2.69399 11.9602 2.5 10.9849 2.5 10C2.5 8.01088 3.29018 6.10322 4.6967 4.6967C6.10322 3.29018 8.01088 2.5 10 2.5C11.9891 2.5 13.8968 3.29018 15.3033 4.6967C16.7098 6.10322 17.5 8.01088 17.5 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>     
+    </div>
+
+  </div>
+
+  <app-songstable [songs]="songs" [liked]="true"></app-songstable>
+</div>
+
+

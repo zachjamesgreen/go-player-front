@@ -13,7 +13,7 @@
     <a 
     class="text-grn hover:underline" [routerLink]="['/album', song.album_id]" id="id-{{song.album_id}}">{{song.album}}</a>
   </div>
-  <div class="flex items-center justify-start w-auto"><p>{{this.song.dateToString()}}</p></div>
+  <div class="flex items-center justify-start w-auto"><p>{{this.song | readableDate: liked}}</p></div>
   <div class="flex items-center justify-end w-auto">
     <div class="mr-8" id="heart" title="{{toolTip()}}" (click)="likeSong($event)">
       <svg 

@@ -9,6 +9,7 @@ import { PlayerService } from '../player.service';
 })
 export class SongstableComponent implements OnInit {
   @Input() songs!: Song[]
+  @Input() liked!: boolean
 
   constructor(private playerService:PlayerService) { }
 

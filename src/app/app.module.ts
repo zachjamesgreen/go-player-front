@@ -23,6 +23,7 @@ import { PlayerComponent } from './player/player.component';
 import { SongstableComponent } from './songstable/songstable.component';
 import { SongtableheaderComponent } from './songtableheader/songtableheader.component';
 import { LikedSongsComponent } from './liked-songs/liked-songs.component';
+import { ReadableDatePipe } from './readable-date.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LikedSongsComponent } from './liked-songs/liked-songs.component';
     PlayerComponent,
     SongstableComponent,
     SongtableheaderComponent,
-    LikedSongsComponent
+    LikedSongsComponent,
+    ReadableDatePipe
   ],
   imports: [
     BrowserModule,

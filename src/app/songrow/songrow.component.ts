@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Song } from '../interfaces/song';
-import { DateTime, Duration }from "luxon";
+import { Duration }from "luxon";
 import { MusicService } from '../music.service';
 import { SpotifyService } from '../spotify.service';
+// import { dateToString } from '../lib/date-to-string';
 
 @Component({
   selector: 'app-songrow',
@@ -12,13 +13,13 @@ import { SpotifyService } from '../spotify.service';
 export class SongrowComponent implements OnInit {
   @Input() song!: Song
   @Input() index!: number
-  date = DateTime.now().toISODate()
+  @Input() liked: boolean = false
+  // date = DateTime.now().toISODate()
 
   constructor(private musicService:MusicService, private spotifyService:SpotifyService) { }
 
   ngOnInit(): void {
     this.getAlbumInfoFromSpotify()
-    console.log(this.song.liked);
   }
 
   formatTime(time: number): string {

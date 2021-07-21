@@ -17,6 +17,7 @@ export class Song {
   album: string;
   duration!: number
   created_at: DateTime
+  liked_date: DateTime
   url = "http://zachgreen.codes:8081/song"
   audio = new Audio()
   album_images: Array<IImages> = []
@@ -34,6 +35,7 @@ export class Song {
     this.album = song.album
     this.liked = song.liked
     this.created_at = DateTime.fromISO(<any>song.created_at)
+    this.liked_date = DateTime.fromISO(<any>song.liked_date)
     this.getDuration()
   }
 
@@ -50,32 +52,32 @@ export class Song {
     }
   }
 
-  dateToString() {
-    if (this.created_at < DateTime.now().plus({months: 1})) {
-      let diff = DateTime.now().diff(this.created_at, ['days', 'seconds', 'hours', 'minutes'])    
-      switch (diff.days) {
-        case 0:       
-          return this.lessThanDay(diff)
-        case 1:
-          return `${diff.days} day ago`
-        default:
-          return `${diff.days} days ago`
-      }
-    } else {
-      return this.created_at.toLocaleString(DateTime.DATE_MED)
-    }
-  }
+  // dateToString() {
+  //   if (this.created_at < DateTime.now().plus({months: 1})) {
+  //     let diff = DateTime.now().diff(this.created_at, ['days', 'seconds', 'hours', 'minutes'])    
+  //     switch (diff.days) {
+  //       case 0:       
+  //         return this.lessThanDay(diff)
+  //       case 1:
+  //         return `${diff.days} day ago`
+  //       default:
+  //         return `${diff.days} days ago`
+  //     }
+  //   } else {
+  //     return this.created_at.toLocaleString(DateTime.DATE_MED)
+  //   }
+  // }
 
-  lessThanDay(diff: Duration) {
-    if (60 < diff.seconds && diff.seconds <  3600) {
-      return `${diff.minutes} minutes ago`
-    } else {
-      if (diff.hours == 1) {
-        return `${diff.hours} hour ago`
-      } else {
-        return `${diff.hours} hours ago`
-      }
-    }
-  }
+  // lessThanDay(diff: Duration) {
+  //   if (60 < diff.seconds && diff.seconds <  3600) {
+  //     return `${diff.minutes} minutes ago`
+  //   } else {
+  //     if (diff.hours == 1) {
+  //       return `${diff.hours} hour ago`
+  //     } else {
+  //       return `${diff.hours} hours ago`
+  //     }
+  //   }
+  // }
 
 }
