@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ENV } from './env';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { DateTime } from 'luxon';
+import { Artist } from
 
 interface Token {
   access_token: string;
@@ -49,8 +50,8 @@ export class SpotifyService {
       });
   }
 
-  getArtistInfo(artistName:string) {
-    this.checkToken();
+  getArtistInfo(artist: Artist) {
+    await this.checkToken();
     let t = JSON.parse(this.token);
     
     let headers = new HttpHeaders({'Authorization': 'Bearer ' + t.access_token});

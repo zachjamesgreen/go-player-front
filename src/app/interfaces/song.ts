@@ -15,7 +15,7 @@ export class Song {
   // genre: string;
   artist: string;
   album: string;
-  duration!: number
+  duration: number = 0
   created_at: DateTime
   liked_date: DateTime
   url = "http://zachgreen.codes:8081/song"
