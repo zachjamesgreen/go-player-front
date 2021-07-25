@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-// import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicService {
-  path = "http://zachgreen.codes:8081"
-  constructor(private http:HttpClient) {
-    
-  }
+  path = "https://api.zachgreen.codes"
+  constructor(private http:HttpClient) { }
 
   getArtist(id: number): Observable<Object> {
     return this.http.get(`${this.path}/artists/${id}`)
