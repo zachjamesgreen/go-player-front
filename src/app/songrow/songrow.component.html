@@ -1,7 +1,6 @@
 <div class="grid grid-cols-5 gap-4 px-8 py-1 text-white hover:bg-grn hover:bg-opacity-40 rounded-md text-sm group cursor-pointer">
   <div class="flex flex-shrink items-center justify-start w-min"><p class="">{{index + 1}}</p></div>
   <div class="flex items-center justify-start w-auto">
-    <!-- <img class="h-12 pr-4" src="http://zachgreen.codes:8081/song/{{song?.artist}}/{{song?.album}}/image.jpg" alt="" *ngIf="song.album_images == []"> -->
     <img class="h-12 pr-4" src="{{song.album_images[0]?.url}}" alt="" *ngIf="song.album_images != []">
       <div>
         <p class="overflow-hidden">{{song.title}}</p>
