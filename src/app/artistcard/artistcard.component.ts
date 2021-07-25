@@ -14,7 +14,7 @@ export class ArtistcardComponent implements OnInit {
   constructor(private spotifyService:SpotifyService, private store:AngularFirestore) { }
 
   ngOnInit(): void {
-    if (this.artist.spotify_id) {
+    if (this.artist.spotify_id === undefined) {
       this.getSpotifyInfo(this.artist);
     }
     

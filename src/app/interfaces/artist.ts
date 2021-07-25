@@ -1,8 +1,14 @@
+interface Image {
+  url: string;
+  height: number;
+  width: number;
+}
+
 export class Artist {
 
   id: number
   name: string
-  images!: any
+  images!: Array<Image>
   spotify_url!: string
   spotify_id!: string
   spotify_genres!: string[]
