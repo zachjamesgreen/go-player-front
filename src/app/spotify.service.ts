@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ENV } from './env';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { DateTime } from 'luxon';
-import { Artist } from
+import { Artist } from './interfaces/artist';
 
 interface Token {
   access_token: string;
@@ -23,19 +23,19 @@ export class SpotifyService {
     this.checkToken();
   }
 
-  checkToken() {
+  async checkToken() {
     if (this.token == null) {
-      this.getToken();
+      await this.getToken();
     } else {
       let t = JSON.parse(this.token);
       let expires = DateTime.fromISO(t.expires);
       if (expires < DateTime.now()) {
-        this.getToken();
+        await this.getToken();
       }
     }
   }
   
-  getToken() {
+  async getToken() {
     let str = 'Basic ' + btoa(ENV.spotify_client_id + ':' + ENV.spotify_client_secret)
     let headers = new HttpHeaders({'Authorization': str, 'Content-Type': 'application/x-www-form-urlencoded'});
     let params = new HttpParams().set('grant_type', 'client_credentials')
@@ -51,11 +51,11 @@ export class SpotifyService {
   }
 
   getArtistInfo(artist: Artist) {
-    await this.checkToken();
+    this.checkToken();
     let t = JSON.parse(this.token);
     
     let headers = new HttpHeaders({'Authorization': 'Bearer ' + t.access_token});
-    return this.http.get(`https://api.spotify.com/v1/search?q=${artistName}&type=artist&limit=1`, {headers: headers});
+    return this.http.get(`https://api.spotify.com/v1/search?q=${artist.name}&type=artist&limit=1`, {headers: headers});
   }
 
   getAlbumInfo(albumName:string) {

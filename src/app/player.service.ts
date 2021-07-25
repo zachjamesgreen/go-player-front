@@ -9,7 +9,7 @@ export class PlayerService {
   private audioObj = new Audio()
   private songs!: Song[]
   private song!: Song
-  private baseUrl = "http://zachgreen.codes:8081/song"
+  private baseUrl = "https://api.zachgreen.codes/song"
   formatedDuration!: string
   currentTime!: string
   audioEvents = [
