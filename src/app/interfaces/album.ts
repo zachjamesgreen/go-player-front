@@ -8,16 +8,18 @@ export class Album {
   // artist: Artist;
   artist_id: number
   artist: string
-  image: boolean
-  spotify_images: Array<IImages> = []
+  // images: boolean
+  images: Array<IImages> = []
   spotify_id!: string;
-  spotify_url!: string;
+  spotify_link!: string;
 
-  constructor(album: Album) {
-    this.id = album.id;
-    this.title = album.title;
-    this.artist_id = album.artist_id;
-    this.image = album.image;
-    this.artist = album.artist;
+  constructor(album: any) {
+    this.id = album.ID;
+    this.title = album.Title;
+    this.artist_id = album.ArtistId;
+    this.images = album.Images;
+    this.artist = album.Artist.Name;
+    this.spotify_id = album.SpotifyId;
+    this.spotify_link = album.SpotifyLink;
   }
 }

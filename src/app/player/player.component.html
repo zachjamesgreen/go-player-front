@@ -3,8 +3,8 @@
   <!-- LEFT -->
   <div class="flex items-center">
     <div class="h-28 w-28">
-      <!-- <img class="h-28" src="https://via.placeholder.com/400x400.webp?text=ZachGreen::Plays" alt=""> -->
-      <img src="{{song.album_images[0]?.url}}" alt="{{song.album}}">
+      <img class="h-28" src="https://via.placeholder.com/400x400.webp?text=ZachGreen::Plays" alt="">
+      <!-- <img src="{{song.album_images[0]?.url}}" alt="{{song.album}}"> -->
     </div>
   </div>
   <!-- CENTER -->
@@ -30,7 +30,7 @@
       <div class="ml-8 mt-6">
         <div class="font-prompt font-normal">
           <p>{{song?.title}}</p>
-          <p class="opacity-40">{{song?.artist}}</p>
+          <p class="opacity-40">{{song?.artist?.name}}</p>
         </div>
       </div>
 

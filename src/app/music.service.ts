@@ -52,4 +52,14 @@ export class MusicService {
   unlike(id: number) {
     return this.http.get(`${this.path}/songs/liked/${id}/remove`)
   }
+
+  deleteSong(id: number) {
+    return this.http.delete(`${this.path}/songs/${id}`)
+  }
+  deleteAlbum(id: number) {
+    return this.http.delete(`${this.path}/albums/${id}`)
+  }
+  deleteArtist(id: number) {
+    return this.http.delete(`${this.path}/artists/${id}`)
+  }
 }

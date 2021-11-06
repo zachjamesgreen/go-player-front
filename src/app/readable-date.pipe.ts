@@ -17,13 +17,24 @@ export class ReadableDatePipe implements PipeTransform {
 
   dateToString(date: DateTime) {
     if (date < DateTime.now().plus({months: 1})) {
-      let diff = DateTime.now().diff(date, ['days', 'seconds', 'hours', 'minutes'])    
+      let diff = DateTime.now().diff(date, ['years','months','days', 'seconds', 'hours', 'minutes'])
+      if (diff.years != 0) {
+        if (diff.years == 1) {
+          return `${diff.years} year ago`
+        } else {
+          return `${diff.years} years ago`
+        }
+      }
+      if (diff.months > 0) {
+        return `${diff.months} months ago`
+      }
       switch (diff.days) {
-        case 0:       
+        case 0:
           return this.lessThanDay(diff)
         case 1:
           return `${diff.days} day ago`
         default:
+          // console.log(diff)
           return `${diff.days} days ago`
       }
     } else {

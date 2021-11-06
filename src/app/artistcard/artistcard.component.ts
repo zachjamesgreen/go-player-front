@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Artist } from '../interfaces/artist';
-import { SpotifyService } from '../spotify.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+// import { SpotifyService } from '../spotify.service';
 
 @Component({
   selector: 'app-artistcard',
@@ -10,26 +9,18 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ArtistcardComponent implements OnInit {
   @Input() artist!: Artist
+  image = ''
 
-  constructor(private spotifyService:SpotifyService, private store:AngularFirestore) { }
+  constructor() { }
 
   ngOnInit(): void {
-    if (this.artist.spotify_id === undefined) {
-      this.getSpotifyInfo(this.artist);
+    if (this.artist.images.length > 0) {
+      this.image = this.artist.images[0].url
+    } else {
+      this.image = `https://via.placeholder.com/300?text=${this.artist.name}`
     }
-    
+    console.log(this.artist)
   }
 
-  getSpotifyInfo(artist: Artist) {
-    this.spotifyService.getArtistInfo(artist).subscribe((artistInfo:any) => {
-      this.artist.images = artistInfo.artists.items[0].images;
-      this.artist.spotify_url = artistInfo.artists.items[0].external_urls.spotify;
-      this.artist.spotify_id = artistInfo.artists.items[0].id;
-      this.artist.spotify_genres = artistInfo.artists.items[0].genres;
-      
-      // let str = JSON.stringify(this.song)
-      this.store.collection('artists').doc(this.artist.id.toString()).set(Object.assign({}, this.artist))
-    });
-  }
 
 }

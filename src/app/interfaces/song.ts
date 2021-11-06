@@ -1,5 +1,7 @@
 import { DateTime, Duration }from "luxon";
 import { IImages } from "./spotify_image"
+import { Artist } from "./artist"
+import { Album } from "./album"
 
 export class Song {
   
@@ -13,28 +15,29 @@ export class Song {
   plays: number = 0;
   liked: boolean;
   // genre: string;
-  artist: string;
-  album: string;
+  artist: Artist;
+  album: Album;
   duration: number = 0
   created_at: DateTime
   liked_date: DateTime
   url = "https://api.zachgreen.codes/song"
   album_images: Array<IImages> = []
 
-  constructor(song: Song) {
-    this.id = song.id
-    this.title = song.title
-    this.track = song.track
-    this.artist_id = song.artist_id
-    this.album_id = song.album_id
-    this.path = this.fixfilepath(song.path)
-    this.year = song.year
+  constructor(song: any) {
+    // console.log(song)
+    this.id = song.ID
+    this.title = song.Title
+    this.track = song.Track
+    this.artist_id = song.ArtistId
+    this.album_id = song.AlbumId
+    this.path = this.fixfilepath(song.Path)
+    this.year = song.Year
     // this.genre = song.genre.name
-    this.artist = song.artist
-    this.album = song.album
-    this.liked = song.liked
-    this.created_at = DateTime.fromISO(<any>song.created_at)
-    this.liked_date = DateTime.fromISO(<any>song.liked_date)
+    this.artist = new Artist(song.Artist)
+    this.album = new Album(song.Album)
+    this.liked = song.Liked
+    this.created_at = DateTime.fromISO(<any>song.CreatedAt)
+    this.liked_date = DateTime.fromISO(<any>song.LikedDate)
     this.getDuration()
   }
 

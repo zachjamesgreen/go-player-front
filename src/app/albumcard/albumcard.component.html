@@ -4,7 +4,7 @@
       class="pt-4 text-3xl"
       [routerLink]="['/album', album.id]"
       id="id-{{album.id}}" >
-      <img src="{{album.spotify_images[0]?.url}}" alt="{{album.title}}">
+      <img src="{{image}}" alt="{{album.title}}">
       <p>{{album.title}}</p>
       <p class="text-sm opacity-50">{{album.artist}}</p>
     </a>

@@ -9,12 +9,13 @@ export class Artist {
   id: number
   name: string
   images!: Array<Image>
-  spotify_url!: string
   spotify_id!: string
-  spotify_genres!: string[]
   
-  constructor(artist: Artist) {
-    this.id = artist.id
-    this.name = artist.name
+  constructor(artist: any) {
+    this.id = artist.ID
+    this.name = artist.Name
+    this.spotify_id = artist.SpotifyId
+    this.images = artist.Images
   }
 }
+

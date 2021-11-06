@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Album } from '../interfaces/album';
 import { Song } from '../interfaces/song';
 import { MusicService } from '../music.service';
-import { SpotifyService } from '../spotify.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+// import { SpotifyService } from '../spotify.service';
 
 @Component({
   selector: 'app-album',
@@ -15,8 +14,9 @@ export class AlbumComponent implements OnInit {
   album_id
   album!: Album
   songs: Song[] = new Array
+  image = ''
 
-  constructor(private musicService:MusicService, private actroute: ActivatedRoute, private spotifyService: SpotifyService, private store: AngularFirestore) {
+  constructor(private musicService:MusicService, private actroute: ActivatedRoute) {
     this.album_id = this.actroute.snapshot.params.id;
   }
 
@@ -37,27 +37,14 @@ export class AlbumComponent implements OnInit {
 
     this.musicService.getAlbum(this.album_id)
       .subscribe((album: any) => {
+        console.log(album)
         this.album = new Album(album)
-        this.getAlbumInfoFromSpotify()
+        if (this.album.images.length > 0) {
+          this.image = this.album.images[0].url
+        } else {
+          this.image = `https://via.placeholder.com/300?=${this.album.title}`
+        }
       })
-  }
-
-  getAlbumInfoFromSpotify() {
-    this.spotifyService.getAlbumInfo(this.album.title).subscribe((albumInfo:any) => {
-      albumInfo['albums']['items'].forEach((album:any) => {
-        album['artists'].forEach((artist:any) => {
-          if (artist['name'] === this.album.artist) {   
-            this.album.spotify_images = album['images'];
-            this.album.spotify_url = album['external_urls']['spotify'];
-            this.album.spotify_id = album['id'];
-            this.songs.forEach((song:any) => {
-              song.album_images = album['images'];
-            })
-            this.store.collection('albums').doc(this.album.id.toString()).set(Object.assign({}, this.album))
-          }
-        })
-      })
-    })
   }
 
 

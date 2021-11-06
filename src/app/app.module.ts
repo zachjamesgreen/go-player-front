@@ -27,6 +27,7 @@ import { ReadableDatePipe } from './readable-date.pipe';
 import { firebaseConfig } from './env';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { SongComponent } from './contextmenus/song/song.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     SongstableComponent,
     SongtableheaderComponent,
     LikedSongsComponent,
-    ReadableDatePipe
+    ReadableDatePipe,
+    SongComponent
   ],
   imports: [
     BrowserModule,

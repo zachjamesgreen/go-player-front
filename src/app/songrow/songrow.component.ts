@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Song } from '../interfaces/song';
 import { Duration }from "luxon";
 import { MusicService } from '../music.service';
-import { SpotifyService } from '../spotify.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+// import { SpotifyService } from '../spotify.service';
 
 @Component({
   selector: 'app-songrow',
@@ -14,12 +13,17 @@ export class SongrowComponent implements OnInit {
   @Input() song!: Song
   @Input() index!: number
   @Input() liked: boolean = false
+  image = ''
   // date = DateTime.now().toISODate()
 
-  constructor(private musicService:MusicService, private spotifyService:SpotifyService, private store:AngularFirestore) { }
+  constructor(private musicService:MusicService) { }
 
   ngOnInit(): void {
-    this.getAlbumInfoFromSpotify()
+    if (this.song.album.images.length > 0) {
+      this.image = this.song.album.images[0].url
+    } else {
+      this.image = `https://via.placeholder.com/300`
+    }
   }
 
   formatTime(time: number): string {
@@ -45,19 +49,5 @@ export class SongrowComponent implements OnInit {
         this.song.liked = true;
       })
     }
-  }
-
-  getAlbumInfoFromSpotify() {
-    this.spotifyService.getAlbumInfo(this.song.album).subscribe((albumInfo:any) => {
-      albumInfo['albums']['items'].forEach((album:any) => {
-        album['artists'].forEach((artist:any) => {
-          if (artist['name'] === this.song.artist) {   
-            this.song.album_images = album['images'];
-            let str = JSON.stringify(this.song)
-            this.store.collection('songs').doc(this.song.id.toString()).set(JSON.parse(str))      
-          }
-        })
-      })
-    })
   }
 }

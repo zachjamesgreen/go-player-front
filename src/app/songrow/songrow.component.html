@@ -1,16 +1,16 @@
 <div class="grid grid-cols-5 gap-4 px-8 py-1 text-white hover:bg-grn hover:bg-opacity-40 rounded-md text-sm group cursor-pointer">
   <div class="flex flex-shrink items-center justify-start w-min"><p class="">{{index + 1}}</p></div>
   <div class="flex items-center justify-start w-auto">
-    <img class="h-12 pr-4" src="{{song.album_images[0]?.url}}" alt="" *ngIf="song.album_images != []">
+    <img class="h-12 pr-4" src="{{image}}" alt="" *ngIf="song.album_images != []">
       <div>
         <p class="overflow-hidden">{{song.title}}</p>
-        <a class="hover:underline" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist}}</a>
+        <a class="hover:underline" [routerLink]="['/artist', song.artist_id]" id="id-{{song.artist_id}}">{{song.artist.name}}</a>
         <!-- <img class="rounded-xl" src="{{artist.images[0].url}}" alt="{{artist.name}}"> -->
       </div>
   </div>
   <div class="flex items-center justify-start w-auto">
     <a 
-    class="text-grn hover:underline" [routerLink]="['/album', song.album_id]" id="id-{{song.album_id}}">{{song.album}}</a>
+    class="text-grn hover:underline" [routerLink]="['/album', song.album_id]" id="id-{{song.album_id}}">{{song.album.title}}</a>
   </div>
   <div class="flex items-center justify-start w-auto"><p>{{this.song | readableDate: liked}}</p></div>
   <div class="flex items-center justify-end w-auto">

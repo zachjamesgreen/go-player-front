@@ -94,7 +94,7 @@ export class PlayerComponent implements OnInit {
   setInfo(song: Song) {
     this.song = song
     this.songTitle = song.title
-    this.artist = song.artist
+    this.artist = song.artist.name
     this.fDuration = this.playerService.formatTime(song.duration)
     this.isPlaying = true
     

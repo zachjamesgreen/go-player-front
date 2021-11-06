@@ -47,8 +47,6 @@ export class ArtistComponent implements OnInit {
     this.musicService.getArtistAlbums(this.artist_id)
     .subscribe((albums: any) => {
       albums.map((album: Album) => {
-        console.log(album);
-        
         this.albums.push(new Album(album))
       })
     })

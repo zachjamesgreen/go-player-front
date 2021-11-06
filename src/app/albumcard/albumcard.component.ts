@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Album } from '../interfaces/album';
-import { SpotifyService } from '../spotify.service';
+// import { SpotifyService } from '../spotify.service';
 
 @Component({
   selector: 'app-albumcard',
@@ -9,26 +9,17 @@ import { SpotifyService } from '../spotify.service';
 })
 export class AlbumcardComponent implements OnInit {
   @Input('album') album!: Album
+  image = ''
 
-  constructor(private spotifyService:SpotifyService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getAlbumInfoFromSpotify();
-    
+    if (this.album.images.length > 0) {
+      this.image = this.album.images[0].url
+    } else {
+      this.image = `https://via.placeholder.com/300?text=${this.album.title}`
+    }
   }
-
-  getAlbumInfoFromSpotify() {
-    this.spotifyService.getAlbumInfo(this.album.title).subscribe((albumInfo:any) => {
-      albumInfo['albums']['items'].forEach((album:any) => {
-        album['artists'].forEach((artist:any) => {
-          if (artist['name'] === this.album.artist) {     
-            this.album.spotify_images = album['images'];
-          }
-        })
-      })
-    })
-  }
-
 }
 
 
