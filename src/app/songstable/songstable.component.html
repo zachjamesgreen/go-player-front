@@ -1,6 +1,6 @@
 <div class="fixed hidden top-0 right-0 bottom-0 left-0" #contextMenuWrapper (click)="closeContextMenu()">
   <div #contextMenu class="absolute bg-grn">
-    <button (click)="deleteSong()">Hello</button>
+    <button (click)="deleteSong()">Delete {{this.song?.title}}</button>
   </div>
 </div>
 
